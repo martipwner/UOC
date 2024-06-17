@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="UOCEmpire" Database="" Version="10000">
+  <Project Name="UOCEmpire" Path="UOCEmpire/UOCEmpire.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Menu">
+      <Environment/>
+      <Project Name="UOCEmpire" ConfigName="Menu"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Test">
+      <Environment/>
+      <Project Name="UOCEmpire" ConfigName="Test"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Session Name="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire.workspace">
+  <int Value="1" Name="m_selectedTab"/>
+  <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire.workspace" Name="m_workspaceName"/>
+  <TabInfoArray Name="TabInfoArray">
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/data.h" Name="FileName"/>
+      <int Value="100" Name="FirstVisibleLine"/>
+      <int Value="120" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/starbase.c" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="514" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/api.c" Name="FileName"/>
+      <int Value="505" Name="FirstVisibleLine"/>
+      <int Value="101" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/menu.c" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="1099" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/mission.c" Name="FileName"/>
+      <int Value="273" Name="FirstVisibleLine"/>
+      <int Value="18" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/main.c" Name="FileName"/>
+      <int Value="46" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/menu.h" Name="FileName"/>
+      <int Value="15" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/ship.c" Name="FileName"/>
+      <int Value="158" Name="FirstVisibleLine"/>
+      <int Value="231" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/mission.h" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/api.h" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/test.h" Name="FileName"/>
+      <int Value="21" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/starbase.h" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/ship.h" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+  </TabInfoArray>
+  <SerializedObject Name="m_breakpoints">
+    <long Value="0" Name="Count"/>
+  </SerializedObject>
+  <wxString Value="*.c;*.cpp;*.cxx;*.cc;*.h;*.hpp;*.inc;*.mm;*.m;*.xrc;*.plist;*.txt" Name="m_findInFilesMask"/>
+</Session>

@@ -1,0 +1,14 @@
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/starbase.c
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/menu.c
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/ship.c
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/starbase.h
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/mission.c
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/main.c
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/api.c
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/data.h
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/test.h
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/api.h
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/mission.h
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/test.c
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/ship.h
+/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/menu.h

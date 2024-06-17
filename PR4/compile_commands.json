@@ -1,0 +1,57 @@
+[{
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/starbase.c",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/gcc -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/starbase.c -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/starbase.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/menu.c",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/gcc -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/menu.c -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/menu.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/ship.c",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/gcc -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/ship.c -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/ship.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/starbase.h",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/g++ -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/starbase.h -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/starbase.h.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/mission.c",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/gcc -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/mission.c -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/mission.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/main.c",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/gcc -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/main.c -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/main.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/api.c",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/gcc -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/api.c -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/api.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/data.h",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/g++ -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/data.h -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/data.h.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/test.h",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/g++ -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/test.h -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/test.h.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/api.h",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/g++ -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/api.h -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/api.h.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/mission.h",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/g++ -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/mission.h -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/mission.h.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/test.c",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/gcc -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/test.c -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/src/test.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/ship.h",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/g++ -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/ship.h -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/ship.h.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/menu.h",
+  "directory": "/home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire",
+  "command": "/usr/bin/g++ -c /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/menu.h -o /home/uoc/Documents/codelite/workspaces/FP/PR4/UOCEmpire/include/menu.h.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }]
