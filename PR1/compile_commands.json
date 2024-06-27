@@ -1,0 +1,5 @@
+[{
+  "file": "/home/uoc/Documents/codelite/workspaces/PAC3_PEC3_CAA3_20232/PAC3_PEC3_CAA3/main.c",
+  "directory": "/home/uoc/Documents/codelite/workspaces/PAC3_PEC3_CAA3_20232/PAC3_PEC3_CAA3",
+  "command": "/usr/bin/gcc -c /home/uoc/Documents/codelite/workspaces/PAC3_PEC3_CAA3_20232/PAC3_PEC3_CAA3/main.c -o /home/uoc/Documents/codelite/workspaces/PAC3_PEC3_CAA3_20232/PAC3_PEC3_CAA3/main.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I.  -gdwarf-2  -O0  -Wall"
+ }]

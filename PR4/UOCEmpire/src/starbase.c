@@ -132,24 +132,18 @@ void hangarInit( tHangar *hangar )
 void hangarCpy(tHangar *dst, tHangar src) 
 {
 /************* PR4 - EX2A ************/
- int i;
+    int i;
     
-    //Copiamos el ID de hangar desde la estructura fuenta a destino
-    dst->id = src.id;
-    //Copiamos el estado de disponibilidad de hangar
+    dst->id= src.id;
     dst->isAvailable = src.isAvailable;
-    //Copiamos el tipo de hangar 
     dst->hangarType = src.hangarType;
-    //Copiamos el tipo de nave que almacena el hangar
     dst->hangarShipType = src.hangarShipType;
-    //Copiamos el número de naves que actualmente están guardadas en el hangar
     dst->nShips = src.nShips;
-    //Bucle para copiar id's de naves guardadas
-    for (i = 0; i < src.nShips; i++) {
-        //copiamos cada ID de nave de la estructura fuente a la estructura destino
-        dst->shipsId[i] = src.shipsId[i];
+    if (src.nShips>0){
+        for(i=0; i<src.nShips ; i++){
+            dst->shipsId[i] = src.shipsId[i];
+        }
     }
-
 /*************************************/
 }
 
@@ -220,59 +214,51 @@ int levelNumberOperativeHangars(tLevelTable levels)
 
 }
 
+
 int starbaseCmp(tStarbase sb1, tStarbase sb2)
 {
     int result = 0;
-
-    /************* PR4 - EX2B ************/
-    // Calcular el porcentaje de ocupación para sb1 y sb2
-    float occupation1 = ((float) starbaseOccupation(sb1)) / starbaseMaxOccupation(sb1);
-    float occupation2 = ((float) starbaseOccupation(sb2)) / starbaseMaxOccupation(sb2);
-
-    // Comparar porcentaje de ocupación (en orden descendente)
-    if (occupation1 > occupation2) {
+/************* PR4 - EX2B ************/
+    if (starbaseOccupation(sb1) > starbaseOccupation(sb2)) {
         result = 1;
-    } else if (occupation1 < occupation2) {
-        result = -1;
     } else {
-        // Si los porcentajes de ocupación son iguales, olvidarse de lo anterior, comparar nombre de la base (en orden ascendente)
-        result = strcmpUpper(sb1.baseName, sb2.baseName);
-        if (result == 0) {
-            // Si los nombres de la base son iguales, comparar nombre del planeta (en orden ascendente)
-            result = strcmpUpper(sb1.planet, sb2.planet);
-            if (result == 0) {
-                // Si los nombres del planeta son iguales, comparar los sectores (en orden ascendente)
-                if (sb1.sector < sb2.sector) {
-                    result = -1;
-                } else if (sb1.sector > sb2.sector) {
-                    result = 1;
-                } else {
-                    // Si los sectores son iguales, comparar número de niveles en la base (en orden descendente)
-                    if (sb1.levels.nLevels > sb2.levels.nLevels) {
-                        result = 1;
-                    } else if (sb1.levels.nLevels < sb2.levels.nLevels) {
-                        result = -1;
-                    } else {
-                        // Si el número de niveles es igual, comparar el número de hangares operativos (en orden descendente)
-                        int operativeHangar1 = levelNumberOperativeHangars(sb1.levels);
-                        int operativeHangar2 = levelNumberOperativeHangars(sb2.levels);
-                        if (operativeHangar1 > operativeHangar2) {
-                            result = 1;
-                        } else if (operativeHangar1 < operativeHangar2) {
-                            result = -1;
-                        } else { // Entonces sb1 = sb2
-                            result = 0;
+        if (starbaseOccupation(sb1) < starbaseOccupation(sb2)) {
+            result = -1;
+        } else {
+            result= strcmpUpper(sb1.baseName, sb2.baseName);
+            if (result==0) {
+                result= strcmpUpper(sb1.planet, sb2.planet);
+                if (result==0) {
+                    if (sb1.sector < sb2.sector) {
+                        result= 1;
+                    } else { 
+                        if (sb1.sector > sb2.sector) {
+                            result= -1;
+                        } else {
+                            if (sb1.levels.nLevels > sb2.levels.nLevels) {
+                                result = 1;
+                            } else { 
+                                if (sb1.levels.nLevels < sb2.levels.nLevels) {
+                                    result = -1;
+                                } else { 
+                                    if (levelNumberOperativeHangars(sb1.levels) > levelNumberOperativeHangars(sb2.levels)) {
+                                        result = 1;
+                                    } else { 
+                                        if (levelNumberOperativeHangars(sb1.levels) < levelNumberOperativeHangars(sb2.levels)) {
+                                            result = -1;
+                                        }
+                                    }  
+                                }
+                            }
                         }
                     }
-                }
+                }                      
             }
         }
-    }
-    /*************************************/
-
+    }  
+/*************************************/
     return result;
 }
-
 
 
 
@@ -344,26 +330,18 @@ int starbaseTableFind(tStarbaseTable tabStarbases, tStarbaseId id)
 void starbaseTableFilterBySector(tStarbaseTable tabStarbase, tSectorId sectorId, tStarbaseTable *result)
 {
 /************* PR4 - EX5A ************/
+    tError retVal= OK;
     int i;
-    tError retVal;
-
-    // Inicializar tabla de resultados
+    
     starbaseTableInit(result);
 
-    // Recorrer toda la tabla de bases estelares de entrada
-    for (i = 0; i < tabStarbase.nStarbases; i++) {
-        // Comprobar si el sector de la base estelar, coincide con el sector que se dá 
-        if (tabStarbase.table[i].sector == sectorId) {
-            // Agregar la base estelar a la tabla de resultados
+    for(i=0; i < tabStarbase.nStarbases; i++) {
+        if (tabStarbase.table[i].sector == sectorId){
             starbaseTableAdd(result, tabStarbase.table[i], &retVal);
-            // Verificar si hubo un error al agregar la base estelar
-            if (retVal != OK) {
-                printf("Error adding starbase to the table %d !\n", retVal);
-                return;
-            }
+        /* retVal will always be OK as the result table will be smaller than tabStarbase 
+               which cannot have more than MAX_STARBASES  */
         }
     }
-
 /**************************************/
 }
 
@@ -468,26 +446,23 @@ void starbaseTableLoad(tStarbaseTable *tabStarbases, const char* filename, tErro
 void starbaseTableOrderByOccupation(tStarbaseTable *starbases)
 {
 /************* PR4 - EX5B ************/
-    int i, j, minIdx;
+    int i, j, minIndex;
     tStarbase temp;
 
     for (i = 0; i < starbases->nStarbases - 1; i++) {
-        // Inicializar el índice del mínimo
-        minIdx = i;
-        // Buscar el índice del elemento con menor ocupación
+        minIndex = i;
         for (j = i + 1; j < starbases->nStarbases; j++) {
-            if (starbaseOccupationPercent(starbases->table[j]) < starbaseOccupationPercent(starbases->table[minIdx])) {
-                minIdx = j;
+            if (starbaseOccupation(starbases->table[j]) < starbaseOccupation(starbases->table[minIndex])) {
+                minIndex = j;
             }
         }
-        // Intercambiar el elemento mínimo con el primer elemento no ordenado
-        if (minIdx != i) {
-            temp = starbases->table[i];
-            starbases->table[i] = starbases->table[minIdx];
-            starbases->table[minIdx] = temp;
+
+        if (minIndex != i) {
+            starbaseCpy(&temp, starbases->table[i]);
+            starbaseCpy(&starbases->table[i], starbases->table[minIndex]);
+            starbaseCpy(&starbases->table[minIndex], temp);
         }
     }
-
 /**************************************/
 }
 
@@ -496,23 +471,16 @@ float starbaseTableAvgOccupation(tStarbaseTable starbases)
     float avgOccupation = 0.0;
     
 /***************************** PR4 - EX8B *************************************/    
-    float totalOccupation = 0.0;
-    float totalCapacity = 0.0;
-
-    // Calcular el total de ocupación y capacidad de todas las bases estelares
-    for (int i = 0; i < starbases.nStarbases; i++) {
-        int occupation = starbaseOccupation(starbases.table[i]);
-        int capacity = starbaseMaxOccupation(starbases.table[i]);
-
-        totalOccupation += occupation;
-        totalCapacity += capacity;
+    int i, capacity, occupation;
+    capacity = 0;
+    occupation = 0;
+    if ( starbases.nStarbases>0 ){
+        for (i=0; i < starbases.nStarbases ; i++){
+            occupation = occupation + starbaseOccupation(starbases.table[i]);
+            capacity = capacity + starbaseMaxOccupation(starbases.table[i]);
+        }
+        avgOccupation = 100 * ((float)occupation / (float)capacity);
     }
-
-    // Calcular el porcentaje promedio de ocupación si hay bases estelares en la tabla
-    if (starbases.nStarbases > 0) {
-        avgOccupation = 100.0 * totalOccupation / totalCapacity;
-    }
-
 /******************************************************************************/
 
     return avgOccupation;
@@ -537,24 +505,15 @@ float starbaseOccupationPercent(tStarbase starbase)
 void starbaseTableFilterByOccupation(tStarbaseTable tabStarbase, float pctOccupation, tStarbaseTable *result)
 {
 /********************************* PR4 - EX8A ***********************************/
-// Inicializar tabla de resultados
+    tError retVal= OK;
+    int i;
+    
     starbaseTableInit(result);
-
-    // Recorrer todas las bases estelares de la tabla
-    for (int i = 0; i < tabStarbase.nStarbases; i++) {
-        // Calcular el porcentaje de ocupación de la base estelar actual
-        float occupationPercent = starbaseOccupationPercent(tabStarbase.table[i]);
-        
-        // Comparar con el porcentaje de ocupación mínimo requerido
-        if (occupationPercent >= pctOccupation) {
-            // Agregar la base estelar a la tabla de resultados
-            tError retVal;
+    for(i=0; i < tabStarbase.nStarbases; i++) {
+        if (starbaseOccupationPercent(tabStarbase.table[i]) >= pctOccupation){
             starbaseTableAdd(result, tabStarbase.table[i], &retVal);
-            // Manejar posibles errores (opcional)
-            if (retVal != OK) {
-                printf("Error adding starbase to the table %d !\n", retVal);
-                return; // O manejar el error de otra forma
-            }
+        /* retVal will always be OK as the result table will be smaller than tabStarbases 
+               which cannot have more than MAX_STARBASES  */
         }
     }
 /********************************************************************************/

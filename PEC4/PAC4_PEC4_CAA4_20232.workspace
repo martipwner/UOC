@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="PAC4_PEC4_CAA4_20232" Database="" Version="10000">
+  <Project Name="PAC4_PEC4_CAA4" Path="PAC4_PEC4_CAA4/PAC4_PEC4_CAA4.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug">
+      <Environment/>
+      <Project Name="PAC4_PEC4_CAA4" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release">
+      <Environment/>
+      <Project Name="PAC4_PEC4_CAA4" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ UOCEmpire - Menu ]----------"
+	@echo "----------Building project:[ UOCEmpire - Test ]----------"
 	@cd "UOCEmpire" && "$(MAKE)" -f  "UOCEmpire.mk"
 clean:
-	@echo "----------Cleaning project:[ UOCEmpire - Menu ]----------"
+	@echo "----------Cleaning project:[ UOCEmpire - Test ]----------"
 	@cd "UOCEmpire" && "$(MAKE)" -f  "UOCEmpire.mk" clean

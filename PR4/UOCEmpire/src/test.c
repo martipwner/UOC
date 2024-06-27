@@ -195,7 +195,7 @@ void runTests(int mode)
     addLine(&lines, summary);
     addLine(&lines, "===================================\n");
     
-    printLines(mode, lines, dsLabOutput);
+    printLines(mode, lines, dsLabOutput);  
 }
 
 /* action to execute the copy & comparison tests */
@@ -706,9 +706,7 @@ void testMissions( int *totalTest, int *passedTest, int mode, tLinesTable *lines
     tAppData app;
     tError retVal;
     bool allInOne, allInTwo;
-#ifdef TYPEDEF_COMPLETED
     int i;
-#endif
     tMission missionAux;
     tStarbaseTable starbaseTableAux;
     /* start DSLab */
@@ -741,13 +739,9 @@ void testMissions( int *totalTest, int *passedTest, int mode, tLinesTable *lines
         starbaseTableCpy(&app.starbases, starbaseTableAux);
         
         allInOne = true;
-#ifdef TYPEDEF_COMPLETED        
         for (i=0; i<app.missions.table[0].assignedShips; i++){
             allInOne = allInOne && app.missions.table[0].assignedShipsInfo[i].assignedStarbase == (tStarbaseId)1;
         } 
-#else
-    allInOne = false;
-#endif
         if (allInOne)    
         {
           addLine(lines, "\n\t-> OK\n");
@@ -778,14 +772,10 @@ void testMissions( int *totalTest, int *passedTest, int mode, tLinesTable *lines
         starbaseTableCpy(&app.starbases, starbaseTableAux);
        
         allInTwo = true;
-#ifdef TYPEDEF_COMPLETED 
         for (i=0; i<app.missions.table[1].assignedShips; i++){
             allInTwo = allInTwo && (app.missions.table[1].assignedShipsInfo[i].assignedStarbase == (tStarbaseId)1 || 
                                     app.missions.table[1].assignedShipsInfo[i].assignedStarbase == (tStarbaseId)2);
         } 
-#else
-    allInTwo = false;
-#endif
         if (allInTwo)    
         {
           addLine(lines, "\n\t-> OK\n");

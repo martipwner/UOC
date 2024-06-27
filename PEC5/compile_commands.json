@@ -1,0 +1,13 @@
+[{
+  "file": "/home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/src/main.c",
+  "directory": "/home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5",
+  "command": "/usr/bin/gcc -c /home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/src/main.c -o /home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/src/main.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/src/restaurant.c",
+  "directory": "/home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5",
+  "command": "/usr/bin/gcc -c /home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/src/restaurant.c -o /home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/src/restaurant.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/include/restaurant.h",
+  "directory": "/home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5",
+  "command": "/usr/bin/g++ -c /home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/include/restaurant.h -o /home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/include/restaurant.h.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -I./include  -gdwarf-2  -O0  -Wall"
+ }]

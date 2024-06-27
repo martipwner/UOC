@@ -174,10 +174,11 @@ bool isShipInHangar( tHangar hangar, tShipId shipId )
 {
     bool found= false;
 /********************** PR4 - EX3A *****************/
-    int i = 0;
-    // Recorremos la lista de naves en el hangar hasta encontrar la nave o llegar al final
-    while (i < hangar.nShips && !found) {
-        found = hangar.shipsId[i] == shipId;
+    int i= 0;
+ 
+    while (i < hangar.nShips && !found)
+    {
+        found = hangar.shipsId[i] == shipId ;
         i++;
     }
 /***************************************************/
@@ -189,11 +190,11 @@ bool isShipInLevel( tLevel level, tShipId shipId )
 {
     bool found= false;
 /********************** PR4 - EX3B *****************/
-int i = 0;
-    // Recorremos todos los hangares en el nivel
-    while (i < level.hangars.nHangars && !found) {
-        // Usamos la función isShipInHangar para verificar si la nave está en el hangar actual
-        found = isShipInHangar(level.hangars.table[i], shipId);
+    int i= 0;
+ 
+    while (i < level.hangars.nHangars && !found)
+    {
+        found = isShipInHangar( level.hangars.table[i], shipId );
         i++;
     }
 /***************************************************/
@@ -205,11 +206,11 @@ bool isShipInStarbase( tStarbase starbase, tShipId shipId )
 {
     bool found= false;
 /********************** PR4 - EX3C *****************/
-    int i = 0;
-    // Recorremos todos los niveles en la base estelar
-    while (i < starbase.levels.nLevels && !found) {
-        // Usamos la función isShipInLevel para verificar si la nave está en el nivel actual
-        found = isShipInLevel(starbase.levels.table[i], shipId);
+    int i= 0;
+ 
+    while (i < starbase.levels.nLevels && !found)
+    {
+        found = isShipInLevel( starbase.levels.table[i], shipId );
         i++;
     }
 /***************************************************/
@@ -220,24 +221,20 @@ bool isShipInAnyStarbase( tStarbaseTable starbases, tShipId shipId )
 {
     bool found= false;
 /********************** PR4 - EX3D *****************/
-    int i=0;
-    // Recorremos todas las bases estelares en la tabla de bases estelares
-    for (i = 0; i < starbases.nStarbases; i++) {
-        // Verificamos si la nave está en la base estelar actual
-        if (isShipInStarbase(starbases.table[i], shipId)) {
-            found = true;
-            break; // Salimos del bucle si encontramos la nave en alguna base estelar
-        }
+    int i= 0;
+ 
+    while (i < starbases.nStarbases && !found)
+    {
+        found = isShipInStarbase( starbases.table[i], shipId );
+        i++;
     }
 /***************************************************/
     return found;
 }
 
-
 bool isShipInMission( tMission mission, tShipId shipId )
 {
     bool found = false;
-#ifdef TYPEDEF_COMPLETED
     int i= 0;
  
     while (i < mission.shipsNeed && !found)
@@ -245,7 +242,7 @@ bool isShipInMission( tMission mission, tShipId shipId )
         found = mission.assignedShipsInfo[i].assignedShipId == shipId;
         i++;
     }
-#endif
+
     return found;
 }
 
@@ -381,8 +378,7 @@ void assignShipsToMission(tMission *mission, tStarbase *starbase, int shipsNeed,
 {  
     int i,j;
     tAssignedShip infoShip;
-    tShipId assignedShipId;
-    
+
     i = 0;
     while ( i < starbase->levels.nLevels && shipsNeed > 0){
         j = 0;
@@ -391,18 +387,16 @@ void assignShipsToMission(tMission *mission, tStarbase *starbase, int shipsNeed,
                  starbase->levels.table[i].hangars.table[j].hangarShipType == shipType){
                 while ( starbase->levels.table[i].hangars.table[j].nShips > 0 &&
                         shipsNeed > 0){
-                    assignedShipId = starbase->levels.table[i].hangars.table[j].shipsId[0];
-                    #ifdef TYPEDEF_COMPLETED    
-                    infoShip.assignedShipId = assignedShipId;
+                    infoShip.assignedShipId = starbase->levels.table[i].hangars.table[j].shipsId[0];
                     infoShip.assignedStarbase = starbase->id;
                     infoShip.assignedLevel = starbase->levels.table[i].id;
                     infoShip.assignedHangar = starbase->levels.table[i].hangars.table[j].id;
-                    #endif
+                    
                     assignedShipCpy(&mission->assignedShipsInfo[mission->assignedShips], infoShip);    
                     mission->assignedShips++;
 
                     /* Delete ship from starbase */
-                    delShipFromStarbase(starbase, assignedShipId);
+                    delShipFromStarbase(starbase, infoShip.assignedShipId);
 
                     /* Update number of ships needed of this type */
                     shipsNeed--;
@@ -418,60 +412,81 @@ void assignShipsToMission(tMission *mission, tStarbase *starbase, int shipsNeed,
 
 
 
-void processMission(tMission *mission, tStarbaseTable *starbases, tError *retVal)
+void processMission( tMission *mission, tStarbaseTable *starbases, tError *retVal )
 {
-    //Parametros 
-    int i, j;
-    bool allShipsAssigned = true;
-    tStarbaseTable filteredStarbases;
+/******************************** PR4 - EX6 ***************************************/
+    int pStarbase;
+    tSectorId sector;
+    tStarbaseTable sectorTab;
+    int shipsNeed[SHIPS_TYPES];
+    int i, j = 0;
+    bool shipsFound = false;
+    int shipsAvailable;
+    tShipType shipType;
     
-    *retVal = OK;
+    *retVal= OK;
 
-    /******************************** PR4 - EX6 ***************************************/
-    // Primero se comprueba si la misión ya está procesada
-    if (mission->assignedShips >= mission->shipsNeed) {
-        *retVal = ERR_CANNOT_PROCESS_MISSION;
-        printf("If it is already processed...");
-        return; // Ya procesada
-    }
+    if (mission->assignedShips != mission->shipsNeed){  
+        /* Number of each ship needed*/
+        for (i=0; i < SHIPS_TYPES; i++)
+            shipsNeed[i] = mission->shipsTypes[i];
 
-    // Inicializar la información de la misión antes de asignar naves
-    mission->assignedShips = 0;
-    memset(mission->assignedShipsInfo, 0, sizeof(tAssignedShip) * MAX_MISSION_SHIPS);
+        /* Check if there are ships enough in start starbase */
 
-    // Obtener la lista de starbases en el mismo sector que la base de inicio de la misión
-    starbaseTableFilterBySector(*starbases, starbases->table[starbaseTableFind(*starbases, mission->startStarbase)].sector, &filteredStarbases);
+        /* Find starbase position in starbases table*/
+        pStarbase = starbaseTableFind(*starbases, mission->startStarbase);
 
-    // Para cada tipo de nave requerido
-    for (i = 0; i < SHIPS_TYPES; i++) {
-        int shipsNeeded = mission->shipsTypes[i];
-
-        while (shipsNeeded > 0 && allShipsAssigned) {
-            allShipsAssigned = false;
-
-            // Recorrer las bases estelares del sector
-            for (j = 0; j < filteredStarbases.nStarbases && shipsNeeded > 0; j++) {
-                int shipsInStarbase = starbaseNumberShipsType(filteredStarbases.table[j], i + 1);
-
-                // Si hay suficientes naves en la base estelar actual
-                if (shipsInStarbase > 0) {
-                    int shipsToAssign = shipsNeeded < shipsInStarbase ? shipsNeeded : shipsInStarbase;
-                    assignShipsToMission(mission, &filteredStarbases.table[j], shipsToAssign, i + 1);
-                    shipsNeeded -= shipsToAssign;
-                    allShipsAssigned = true;
+        if (pStarbase!= NO_STARBASE){
+            for (i=0; i < SHIPS_TYPES; i++){
+                shipType = (tShipType)i+1;
+                shipsAvailable = starbaseNumberShipsType(starbases->table[pStarbase], shipType);
+                if (shipsAvailable > 0){
+                    assignShipsToMission(mission, &starbases->table[pStarbase], shipsNeed[i], shipType); 
+                    shipsNeed[i] = shipsNeed[i] - shipsAvailable;
                 }
             }
+        
+            shipsFound = foundAllShips(shipsNeed);
+        
+            if (!shipsFound){
+                /* Find if there are ships enough in other starbases of sector */
 
-            // Si no se pudieron asignar todas las naves necesarias en el sector
-            if (shipsNeeded > 0 && !allShipsAssigned) {
-                printf("No ships enough in sector. Mission cannot be processed\n");
-                *retVal = ERR_CANNOT_PROCESS_MISSION;
-                return;
+                sector = starbases->table[pStarbase].sector;
+
+                /* Filter starbases by sector */
+                starbaseTableFilterBySector(*starbases, sector, &sectorTab);
+                
+                /* Exclude start starbase */
+                starbaseTableDel(&sectorTab, mission->startStarbase);
+
+                if (sectorTab.nStarbases > 0){
+                    j = 0;
+                    while (!shipsFound && j < sectorTab.nStarbases){
+                        for (i=0; i < SHIPS_TYPES; i++){
+                            shipType = (tShipType)i+1;
+                            shipsAvailable = starbaseNumberShipsType(sectorTab.table[j], shipType);
+                            if (shipsAvailable > 0){
+                                pStarbase = starbaseTableFind(*starbases, sectorTab.table[j].id);
+                                assignShipsToMission(mission, &starbases->table[pStarbase], shipsNeed[i], shipType);  
+                                shipsNeed[i] = shipsNeed[i] - shipsAvailable;
+                            }
+                        }
+                        shipsFound = foundAllShips(shipsNeed);
+                        j++;    
+                    }
+
+                    if (!shipsFound)
+                        *retVal = ERR_CANNOT_PROCESS_MISSION;
+                 } else
+                     *retVal = ERR_CANNOT_PROCESS_MISSION;
             }
-        }
+        } else
+            *retVal = ERR_STARBASE_NOT_FOUND;
+        
+    } else {
+        *retVal = ERR_MISSION_ALREADY_PROCESSED;
     }
-
-    /******************************************************************************/
+/******************************************************************************************/    
 }
 
 

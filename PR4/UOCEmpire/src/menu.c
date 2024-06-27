@@ -112,10 +112,12 @@ void readShip(tShip *ship, tError *retVal)
 
 void readHangar(tHangar *hangar, tHangarId id, tShipTable shipTable, tError *retVal) 
 {
-    int number, auxHangarType;
+    int number, auxHangarType, auxHangarShipType, nShips, shipId;
     int i;
+    
     /* autoassign id */
     hangar->id = (tHangarId)id;
+
     *retVal = ERROR;
     while (*retVal == ERROR) {
         printf("Is available? (0-NO, 1-YES):\n>> ");
@@ -125,44 +127,52 @@ void readHangar(tHangar *hangar, tHangarId id, tShipTable shipTable, tError *ret
             *retVal = OK;
         }
     }
+
     *retVal = ERROR;
     while (*retVal == ERROR) {
         printf("Hangar type? (1-STORAGE, 2-SHIPS, 3-OTHERS)\n>> ");
         scanf("%d", &auxHangarType); 
         if ( auxHangarType >= STORAGE && auxHangarType <= OTHERS) {
             hangar->hangarType = auxHangarType;           
+            //*retVal = OK;
             /* Hangar stores ships */
             if ( auxHangarType == SHIPS ) {
-/**************************** PR4 - EX4 ****************revisar - algo al final falla a veces*****/
-                // Lectura de naves asignadas al hangar
-                printf("Enter the number of ships assigned to the hangar:\n");
-                scanf("%d", &hangar->nShips);
-                
-                // Validamos que número de naves asignadas < el límite del hangar (no está en enunciado pero...)
-                if (hangar->nShips > MAX_HANGAR_SHIPS) {
-                    printf("Exceeded maximum number of ships for this hangar (Try again)\n");
-                } else {
-                    // Lectura de los ID's de las naves asignadas
-                    printf("Enter ship ID's assigned to hangar:\n");
-                    for (i = 0; i < hangar->nShips; i++) {
-                        tShipId shipId;
-                        scanf("%d", &shipId);
-                        // Validamos que ID de cada nave exista en la tabla de naves usando función shipTableFind
-                        if (shipTableFind(shipTable, shipId) == NO_SHIP) {
-                            printf("Ship not found in ships table. (Please select another one)\n");
-                            break; // Ojo no se sale de bucle. Seguimos en retVAl == ERROR, volvemos a hangarType
+/**************************** PR4 - EX4 ***********************/
+                //*retVal = ERROR;
+                while (*retVal == ERROR) {
+                    printf("Hangar ship type? (1-CARRIER, 2-TRANSPORT, 3-FIGHTER, 4-MEDICAL, 5-EXPLORER)\n>> ");
+                    scanf("%d", &auxHangarShipType); 
+                    if ( auxHangarShipType >= CARRIER && auxHangarShipType <= EXPLORER) {
+                        hangar->hangarShipType = auxHangarShipType;
+                        printf("Number of ships in hangar? (integer greater than %d and less than %d):\n>> ", 0, MAX_HANGAR_SHIPS);
+                        scanf("%d", &nShips);
+                        while (nShips<=0 || nShips>=MAX_HANGAR_SHIPS){
+                            printf("Incorrect value, try again\n");
+                            printf("Number of ships in hangar? (integer greater than %d and less than %d):\n>> ", 0, MAX_HANGAR_SHIPS);
+                            scanf("%d", &nShips);
                         }
-                        // Asignamos el ID de la nave al array de IDs en hangar
-                        hangar->shipsId[i] = shipId;
-                    }
-                    // Finalizamos bucle
-                    if (i == hangar->nShips) {
-                        // Todos los IDs de naves han llegado a válidos
+                        for (i=0; i < nShips ; i++){
+                            printf("Identifier ship %d in hangar\n", i+1);
+                            scanf("%d", &shipId);
+                            /* Check ship is in ships table */
+                            while (shipTableFind(shipTable, (tShipId) shipId)== NO_SHIP){
+                                printf("Ship unknown in ships table. Please, select another one.\n");
+                                printf("Identifier ship %d in hangar\n", i+1);
+                                scanf("%d", &shipId);
+                            }
+                            
+                            hangar->shipsId[i] = (tShipId)shipId;
+                            hangar->nShips++;
+                            
+                        }
                         *retVal = OK;
-                    } 
+                    }
+                    else
+                        printf("Incorrect type of ship\n");
                 }
-/************************************************************************************************/
-            } else {
+             } 
+/******************************************************************************/
+             else {
                  /* Hangar not stores ships */
                  hangar->hangarShipType = NO_SHIP_TYPE;
                  hangar->nShips = 0;
@@ -170,6 +180,7 @@ void readHangar(tHangar *hangar, tHangarId id, tShipTable shipTable, tError *ret
                      hangar->shipsId[i] = NO_SHIP;
                  *retVal = OK;
              }
+
         }
     }
  
@@ -477,54 +488,43 @@ void readMission(tMission *mission, tError *retVal)
 void printMissionInfo(tMission mission, tStarbaseTable starbases)
 {
 /************************ PR4 - EX7 **************************/
-{ printf("------------------------------------------------------\n");
-    printf("Mission identifier: %d\n", mission.id);
+    int pStarbase,i;
+    char typeName[MAX_TYPE_NAME];
+
+    pStarbase = starbaseTableFind(starbases, mission.startStarbase);
+
+    printf("------------------------------------------------------\n");
+    printf("  Mission identifier: %d \n", mission.id );               
+    printf("------------------------------------------------------\n");
+    printf("  Mission starbase initial.... \n" );               
+    printf("  Identifier: %d\n", (int)mission.startStarbase );               
+    printf("  Name: %s\n", starbases.table[pStarbase].baseName );               
+    printf("  Planet: %s \n", starbases.table[pStarbase].planet );
+    printf("------------------------------------------------------\n");
+    printf("  Mission resources.... \n" );
+    
+    for (i=0; i < SHIPS_TYPES ; i++){
+        getTypeName(i+1, typeName);
+        printf("  Ships %s type: %d\n", typeName, mission.shipsTypes[i] );               
+    }         
+
     printf("------------------------------------------------------\n");
 
-    // Imprimir detalles de la base estelar inicial
-    int startStarbaseIdx = starbaseTableFind(starbases, mission.startStarbase);
-    if (startStarbaseIdx != NO_STARBASE) {
-        tStarbase startStarbase = starbases.table[startStarbaseIdx];
-        printf("Mission starbase initial....\n");
-        printf("Identifier: %d\n", startStarbase.id);
-        printf("Name: %s\n", startStarbase.baseName);
-        printf("Planet: %s\n", startStarbase.planet);
+    if (mission.assignedShips > 0){
+        printf("  Assigned ships.... \n" );
+
+        for (i=0; i < mission.assignedShips ; i++){
+            pStarbase = starbaseTableFind(starbases, mission.assignedShipsInfo[i].assignedStarbase);
+            printf("  [%d] Id: %d Starbase: %s Level: %d Hangar: %d\n", i+1, mission.assignedShipsInfo[i].assignedShipId, 
+                    starbases.table[pStarbase].baseName, mission.assignedShipsInfo[i].assignedLevel, 
+                    mission.assignedShipsInfo[i].assignedHangar );
+        } 
     }
-
+    else 
+        printf("  Ships: Not yet assigned\n" );               
+   
     printf("------------------------------------------------------\n");
 
-    // Imprimir la cantidad de naves requeridas de cada tipo
-    printf("Mission resources....\n");
-    printf("Ships CARRIER type: %d\n", mission.shipsTypes[CARRIER - 1]);
-    printf("Ships TRANSPORT type: %d\n", mission.shipsTypes[TRANSPORT - 1]);
-    printf("Ships FIGHTER type: %d\n", mission.shipsTypes[FIGHTER - 1]);
-    printf("Ships MEDICAL type: %d\n", mission.shipsTypes[MEDICAL - 1]);
-    printf("Ships EXPLORER type: %d\n", mission.shipsTypes[EXPLORER - 1]);
-
-    printf("------------------------------------------------------\n");
-
-    // Verificar si hay naves asignadas
-    if (mission.assignedShips > 0) {
-        // Imprimir las naves asignadas en la misión
-        printf("Assigned ships....\n");
-        for (int i = 0; i < mission.assignedShips; i++) {
-            tAssignedShip assignedShip = mission.assignedShipsInfo[i];
-            int starbaseIdx = starbaseTableFind(starbases, assignedShip.assignedStarbase);
-            if (starbaseIdx != NO_STARBASE) {
-                tStarbase starbase = starbases.table[starbaseIdx];
-                printf("[%d] Id: %d Starbase: %s Level: %d Hangar: %d\n", 
-                       i + 1, assignedShip.assignedShipId, starbase.baseName, 
-                       assignedShip.assignedLevel, assignedShip.assignedHangar);
-            }
-        }
-    } else {
-        // Indicar que no hay naves asignadas aún
-        printf("Ships: Not yet assigned\n");
-    }
-
-
-    printf("------------------------------------------------------\n");
-}
 /***********************************************************/
 }
 
@@ -975,7 +975,12 @@ void missionMenu(tAppData *appData)
                       starbaseTableCpy(&appData->starbases, starbaseTableAux);
                       printf("Mission processed.\n");
                   } else {
-                      printf("Mission cannot be processed.\n");
+                      if (retVal==ERR_MISSION_ALREADY_PROCESSED){
+                          printf("Mission already processed.\n");
+                      } else {
+                          printf("Mission cannot be processed.\n");
+                      
+                      }
                   }
               } else
                   printf("No missions\n");
@@ -1076,7 +1081,7 @@ void statMenu(tAppData *appData)
                      /* Print the starbases */			
                      printStarbaseTable(starbaseTable);	
                  } else	
-                     printf("No starbases over %.2f percent of occupation\n", minPercent);
+                     printf("No starbases over %f percent of occupation\n", minPercent);
              }
              else
                 printf("No starbases\n");

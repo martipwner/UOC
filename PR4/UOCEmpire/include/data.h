@@ -8,7 +8,6 @@
  * therefore next time this file will be included it will be defined and no 
  * inclusion will be done. */
 
-/* Uncomment the line below once you've completed the exercise 1*/
 #define TYPEDEF_COMPLETED
 
 #define MAX_PATHNAME 255
@@ -36,7 +35,7 @@
 #define NO_HANGAR_TYPE -1
 
 
-#define MAX_NAME 25
+#define MAX_NAME 25+1
 #define MAX_TYPE_NAME 10
 #define SHIPS_TYPES 5
 #define MAX_MISSIONS 50
@@ -49,10 +48,10 @@ typedef enum {OK=1, ERROR=0, ERR_CANNOT_READ=-1, ERR_CANNOT_WRITE=-2,
               ERR_ENTRY_NOT_FOUND=-6, ERR_STARBASE_NOT_FOUND=-7, 
               ERR_CANNOT_PROCESS_MISSION=-8, ERR_NO_MISSION=-9, ERR_NO_LEVEL= -10, 
               ERR_NO_HANGAR= -11, ERR_MISSION_ASSIGNED= -12, ERR_SHIP_IN_STARBASE= -13, 
-              ERR_SHIP_IN_MISSION= -14, ERR_MISSION_HAS_SHIPS= -15, ERR_CANNOT_PROCESS_ALL= -16
+              ERR_SHIP_IN_MISSION= -14, ERR_MISSION_HAS_SHIPS= -15, 
+              ERR_CANNOT_PROCESS_ALL= -16, ERR_MISSION_ALREADY_PROCESSED= -17
               } tError;
 
-/* Definition of the identifiers types */
 typedef int tShipId;
 typedef int tStarbaseId;
 typedef int tLevelId;
@@ -60,8 +59,6 @@ typedef int tHangarId;
 typedef int tMissionId;
 typedef int tSectorId;
 
-
-/* Definition of the data type. */
 
 typedef enum {CARRIER=1, TRANSPORT, FIGHTER, MEDICAL, EXPLORER} tShipType;
 typedef enum {STORAGE=1, SHIPS, OTHERS} tHangarType;
@@ -122,12 +119,13 @@ typedef struct {
 
 /************** PR4 - EX1 ************/
 typedef struct {
-    tShipId assignedShipId;       // Id de nave
-    tStarbaseId assignedStarbase; // Id de la base donde está la nave
-    tLevelId assignedLevel;       // Id del nivel que está dentro de la base estelar
-    tHangarId assignedHangar;     // Id del hangar que está dentro del nivel 
+    tShipId assignedShipId;
+    tStarbaseId assignedStarbase;
+    tLevelId assignedLevel;
+    tHangarId assignedHangar;
 } tAssignedShip;
 /*************************************/
+
 typedef struct {
     tMissionId id; 
     tStarbaseId startStarbase;

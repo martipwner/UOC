@@ -1,0 +1,13 @@
+[{
+  "file": "/home/uoc/Desktop/PR3/PR3/include/galacticempire.h",
+  "directory": "/home/uoc/Desktop/PR3/PR3",
+  "command": "/usr/bin/g++ -c /home/uoc/Desktop/PR3/PR3/include/galacticempire.h -o /home/uoc/Desktop/PR3/PR3/include/galacticempire.h.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -Iinclude  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Desktop/PR3/PR3/src/galacticempire.c",
+  "directory": "/home/uoc/Desktop/PR3/PR3",
+  "command": "/usr/bin/gcc -c /home/uoc/Desktop/PR3/PR3/src/galacticempire.c -o /home/uoc/Desktop/PR3/PR3/src/galacticempire.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -Iinclude  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "/home/uoc/Desktop/PR3/PR3/src/main.c",
+  "directory": "/home/uoc/Desktop/PR3/PR3",
+  "command": "/usr/bin/gcc -c /home/uoc/Desktop/PR3/PR3/src/main.c -o /home/uoc/Desktop/PR3/PR3/src/main.c.o -target x86_64-linux-gnu -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -I. -I. -Iinclude  -gdwarf-2  -O0  -Wall"
+ }]

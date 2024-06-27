@@ -1,0 +1,3 @@
+/home/uoc/Desktop/PR3/PR3/include/galacticempire.h
+/home/uoc/Desktop/PR3/PR3/src/galacticempire.c
+/home/uoc/Desktop/PR3/PR3/src/main.c

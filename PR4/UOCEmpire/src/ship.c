@@ -215,19 +215,16 @@ void shipTableLoad(tShipTable *tabShip, const char* filename, tError *retVal) {
 void shipTableSelectShips(tShipTable ships, tShipType shipType, tShipTable *result) 
 {
 /************** PR4 EX8C ***************/
-  // Inicializar la tabla de resultado
-    shipTableInit(result);
+    int i;
+    tError retVal;
+    bool selected= false;
 
-    // Recorrer la tabla de naves
-    for (int i = 0; i < ships.nShips; i++) {
-        if (ships.table[i].shipType == shipType) {
-            // Agregar la nave al resultado si es del tipo deseado
-            tError retVal;
+    shipTableInit(result);
+    
+    for(i=0;i<ships.nShips;i++) {
+        selected = (ships.table[i].shipType == shipType);
+        if (selected){
             shipTableAdd(result, ships.table[i], &retVal);
-            if (retVal != OK) {
-                printf("Error adding ship to the result table: %d\n", retVal);
-                return;
-            }
         }
     }
 /***************************************/

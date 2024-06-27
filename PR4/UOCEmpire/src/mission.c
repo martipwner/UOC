@@ -28,11 +28,10 @@ void getMissionStr(tMission mission, int maxSize, char *str)
     /* Add the data of assigned ships in mission */
     for (i= 0; i < mission.assignedShips; i++) {
         strcpy(tempStr,str);
-#ifdef TYPEDEF_COMPLETED
         snprintf(str,maxSize-1,"%s %d %d %d %d", tempStr, 
              (int)mission.assignedShipsInfo[i].assignedShipId, (int)mission.assignedShipsInfo[i].assignedStarbase, 
              (int)mission.assignedShipsInfo[i].assignedLevel, (int)mission.assignedShipsInfo[i].assignedHangar); 
-#endif
+
     }        
 }
 
@@ -47,14 +46,12 @@ void missionInit( tMission *mission )
         mission->shipsTypes[i] = 0;
     }
     mission->assignedShips = 0;
-#ifdef TYPEDEF_COMPLETED
     for (i=0; i < MAX_MISSION_SHIPS; i++) {
         mission->assignedShipsInfo[i].assignedShipId = NO_SHIP;
         mission->assignedShipsInfo[i].assignedStarbase = NO_STARBASE;
         mission->assignedShipsInfo[i].assignedLevel = NO_LEVEL;
         mission->assignedShipsInfo[i].assignedHangar = NO_HANGAR;
     }
-#endif
 }
 
 
@@ -86,24 +83,20 @@ void getMissionObject(const char *str, tMission *mission)
     for (i=0; i < mission->assignedShips; i++){
         sscanf(buffer, "%d %d %d %d %[^\n]s", &auxShipId, &auxStarbaseId, 
             &auxLevelId, &auxHangarId, buffer);
-#ifdef TYPEDEF_COMPLETED
         mission->assignedShipsInfo[i].assignedShipId = (tShipId)auxShipId;
         mission->assignedShipsInfo[i].assignedStarbase = (tStarbaseId)auxStarbaseId;
         mission->assignedShipsInfo[i].assignedLevel = (tLevelId)auxLevelId;
-        mission->assignedShipsInfo[i].assignedHangar = (tHangarId)auxHangarId;
-#endif        
+        mission->assignedShipsInfo[i].assignedHangar = (tHangarId)auxHangarId;        
     }
 }
 
 
 void assignedShipCpy(tAssignedShip *dst, tAssignedShip src)
 {
-#ifdef TYPEDEF_COMPLETED
     dst->assignedShipId = src.assignedShipId;
     dst->assignedStarbase = src.assignedStarbase;
     dst->assignedLevel = src.assignedLevel;
     dst->assignedHangar = src.assignedHangar;
-#endif
 }
 
 void missionCpy(tMission *dst, tMission src) 
@@ -273,28 +266,23 @@ void missionTableDel(tMissionTable *missions, tMissionId id)
 void missionTableSortByShips(tMissionTable *tabMissions)
 {
 /************* PR4 - EX5C *************/
-// No funciona Xwiki aunque sí los PDF's
-    int i, j, maxIdx;
+    int i, j, maxIndex;
     tMission temp;
 
     for (i = 0; i < tabMissions->nMissions - 1; i++) {
-        // Inicializar el índice del máximo
-        maxIdx = i;
-        // Buscar el índice de la mejor misión
+        maxIndex = i;
         for (j = i + 1; j < tabMissions->nMissions; j++) {
-            if (missionCmp(tabMissions->table[j], tabMissions->table[maxIdx]) > 0) {
-                maxIdx = j;
+            if (missionCmp(tabMissions->table[j], tabMissions->table[maxIndex]) > 0) {
+                maxIndex = j;
             }
         }
 
-        // Intercambiar la misión con el mejor parámetro con la primera misión no ordenada
-        if (maxIdx != i) {
-            temp = tabMissions->table[i];
-            tabMissions->table[i] = tabMissions->table[maxIdx];
-            tabMissions->table[maxIdx] = temp;
+        if (maxIndex != i) {
+            missionCpy(&temp, tabMissions->table[i]);
+            missionCpy(&tabMissions->table[i], tabMissions->table[maxIndex]);
+            missionCpy(&tabMissions->table[maxIndex], temp);
         }
     }
-
 /**************************************/
 }
 

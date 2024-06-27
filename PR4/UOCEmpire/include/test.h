@@ -39,6 +39,7 @@
 #define DSLAB_MODE 2
 #define MAX_CHARS 125
 #define MAX_LINES 150
+/* #define __DSLAB_ON */
 typedef char tLine[MAX_CHARS];
 typedef struct {
     tLine lines[MAX_LINES];

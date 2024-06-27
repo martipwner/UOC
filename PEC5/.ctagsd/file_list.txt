@@ -1,0 +1,3 @@
+/home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/include/restaurant.h
+/home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/src/restaurant.c
+/home/uoc/Documents/codelite/workspaces/PAC5_PEC5_CAA5_20232/PAC5_PEC5_CAA5/src/main.c
